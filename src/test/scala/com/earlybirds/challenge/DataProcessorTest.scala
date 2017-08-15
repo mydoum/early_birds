@@ -17,17 +17,12 @@ class DataProcessorTest extends FunSuite with BeforeAndAfterAll {
   }
 
   class fullProcessClass {
-    val seriesDF: DataFrame = rankingProcessor.getSeriesDataFrameFromFile("src/test/resources/data/anime.csv")
-    val filteredDF: DataFrame = rankingProcessor.filterAnimeDF(seriesDF)
-    val transform: DataFrame = rankingProcessor.transformGenreStringToArray(filteredDF)
-    val getGenre: DataFrame = rankingProcessor.explodeDataFrameByGenre(transform)
-    val reduceGenre: DataFrame = rankingProcessor.reduceRatingByGenre(getGenre)
-    val sortedResult: DataFrame = rankingProcessor.sortByRating(reduceGenre)
+    val dataDF: DataFrame = dataProcessor.loadDataFromFile("src/test/resources/data/anime.csv")
   }
 
   test("Load the series CSV", Tag("loadSeriesCSV")) {
     new fullProcessClass {
-      assert(seriesDF.count != 0)
+      assert(dataDF.count != 0)
     }
   }
 }
