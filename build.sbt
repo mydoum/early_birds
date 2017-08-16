@@ -21,5 +21,4 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
-libraryDependencies += "com.github.scopt" %% "scopt" % "3.6.0"
 
